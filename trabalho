@@ -1,0 +1,62 @@
+#include<iostream>
+#include<ctime>
+
+using namespace std;
+
+class redeSocial{
+    public:
+    string nome;
+
+    redeSocial();
+    redeSocial(string nome);
+
+};
+
+class usuario{
+    public:
+    string nome;
+    string id;
+
+    void imprimeInfo(){
+        cin >> this->nome;
+        cout << this->nome << endl;
+
+    }
+};
+
+class publicacao{
+    public:
+    string conteudo;
+    tm data;
+
+    publicacao(){
+        time_t tt;
+        time(&tt);
+        tm dataAtual = *localtime(&tt);
+        this->data = dataAtual;
+    }
+
+    void imprimeInfo(){
+        cout << this->data.tm_mday << '/' << this->data.tm_mon + 1 << '/' this->data.tm_year + 1900;
+    }
+};
+
+class grupo{
+    string nome;
+    int idade;
+    string categoria;
+    *usuario = adm;
+};
+
+class categoria{
+    string nome;
+};
+
+int main(){
+
+    usuario* u;
+    u = new usuario();
+    u->imprimeInfo();
+
+    return 0;
+}
