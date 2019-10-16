@@ -99,6 +99,7 @@ class usuario{
     }
 
     void imprimePublicacoes(){
+        vector //não conseguindo criar o vetor
         cout <<
     }
 
@@ -144,7 +145,7 @@ class publicacao{
     }
 
     void imprimeInfo(){
-        cout << this->data.tm_mday << '/' << this->data.tm_mon + 1 << '/' this->data.tm_year + 1900;
+        cout << this->data.tm_mday << "/" << this->data.tm_mon + 1 << "/" this->data.tm_year + 1900;
     }
 };
 
