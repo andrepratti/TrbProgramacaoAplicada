@@ -22,6 +22,38 @@ class usuario{
         cout << this->nome << endl;
 
     }
+
+    void imprimePublicacoes(){
+        cout <<
+    }
+
+    void imprimeSeguidores(){
+
+    }
+
+    void novoSeguidor(){
+
+    }
+
+    void removerSeguidor(){
+
+    }
+
+    void criarSeguidor(){
+
+    }
+
+    void editarPublicacao(){
+
+    }
+
+    void excluirPublicacao(){
+
+    }
+
+    int validadeIdade(idadeMin: int){
+
+    }
 };
 
 class publicacao{
@@ -46,6 +78,19 @@ class grupo{
     int idade;
     string categoria;
     *usuario = adm;
+
+    void adicionarParticipante(Usuario* usuario){
+
+    }
+
+    void removerParticipante(){
+
+    }
+
+    void imprimirParticipantes(){
+
+    }
+
 };
 
 class categoria{
