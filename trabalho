@@ -10,6 +10,81 @@ class redeSocial{
     redeSocial();
     redeSocial(string nome);
 
+    void criarUsuario(){
+
+    }
+
+    void criarGrupo(){
+
+    }
+
+    void imprimirUsuariosCadastrados(){
+
+    }
+
+    void imprimirGruposCadastrados(){
+
+    }
+
+    void imprimirGruposCadastrados(categoria: string){
+
+    }
+
+    void imprimirAnivarsariantesDoMes(){
+
+    }
+
+    void selecionaGrupo(){
+
+    }
+
+    void excluirGrupo(){
+
+    }
+
+    void adicionarParticipanteGrupo(){
+
+    }
+
+    void removerParticipanteGrupo(){
+
+    }
+
+    void imprimirParticipantesGrupo(){
+
+    }
+
+    void selecionaUsuario(){
+
+    }
+
+    void seguirUsuario(){
+
+    }
+
+    void deixarSeguirUsuario(){
+
+    }
+
+    void criarPublicacaoUsuario(){
+
+    }
+
+    void editarPublicacaoUsuario(){
+
+    }
+
+    void excluirPublicacaoUsuario(){
+
+    }
+
+    void imprimirPublicacoesUsuario(){
+
+    }
+
+    void imprimirSeguidoresUsuario(){
+
+    }
 };
 
 class usuario{
