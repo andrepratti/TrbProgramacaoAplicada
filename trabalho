@@ -1,90 +1,27 @@
 #include<iostream>
 #include<ctime>
+#include<vector>
+#include <locale.h>
+#include <stdio.h>
+#include <windows.h> //#include <cstdlib.h>
 
 using namespace std;
 
-class redeSocial{
+class publicacao{
     public:
-    string nome;
+    string conteudo;
+    tm data;
 
-    redeSocial();
-    redeSocial(string nome);
-
-    void criarUsuario(){
-
-    }
-
-    void criarGrupo(){
-
-    }
-
-    void imprimirUsuariosCadastrados(){
-
-    }
-
-    void imprimirGruposCadastrados(){
-
-    }
-
-    void imprimirGruposCadastrados(categoria: string){
-
-    }
-
-    void imprimirAnivarsariantesDoMes(){
-
-    }
-
-    void selecionaGrupo(){
-
-    }
-
-    void excluirGrupo(){
-
-    }
-
-    void adicionarParticipanteGrupo(){
-
-    }
-
-    void removerParticipanteGrupo(){
-
-    }
-
-    void imprimirParticipantesGrupo(){
-
-    }
-
-    void selecionaUsuario(){
-
-    }
-
-    void seguirUsuario(){
-
-    }
-
-    void deixarSeguirUsuario(){
-
-    }
-
-    void criarPublicacaoUsuario(){
-
-    }
-
-    void editarPublicacaoUsuario(){
-
-    }
-
-    void excluirPublicacaoUsuario(){
-
-    }
-
-    void imprimirPublicacoesUsuario(){
-
-    }
-
-    void imprimirSeguidoresUsuario(){
-
-    }
+//    publicacao(){
+//        time_t tt;
+//        time(&tt);
+//        tm dataAtual = *localtime(&tt);
+//        this->data = dataAtual;
+//    }
+//
+//    void imprimeInfo(){
+//        cout << this->data.tm_mday << "/" << this->data.tm_mon + 1 << "/" this->data.tm_year + 1900;
+//    }
 };
 
 class usuario{
@@ -92,92 +29,344 @@ class usuario{
     string nome;
     string id;
 
+    usuario(){}
+    usuario(string n, string id){
+        this->nome = n;
+        this->id = id;
+    }
+
+//    vector<string>usuario;
+//
     void imprimeInfo(){
-        cin >> this->nome;
         cout << this->nome << endl;
-
+        cout << this->id << endl;
     }
-
-    void imprimePublicacoes(){
-        vector //não conseguindo criar o vetor
-        cout <<
-    }
-
-    void imprimeSeguidores(){
-
-    }
-
-    void novoSeguidor(){
-
-    }
-
-    void removerSeguidor(){
-
-    }
-
-    void criarSeguidor(){
-
-    }
-
-    void editarPublicacao(){
-
-    }
-
-    void excluirPublicacao(){
-
-    }
-
-    int validadeIdade(idadeMin: int){
-
-    }
+//
+//    void imprimePublicacoes(){
+//        vector //não conseguindo criar o vetor
+//        cout <<
+//    }
+//
+//    void imprimeSeguidores(){
+//
+//    }
+//
+//    void novoSeguidor(){
+//
+//    }
+//
+//    void removerSeguidor(){
+//
+//    }
+//
+//    void criarSeguidor(){
+//
+//    }
+//
+//    void editarPublicacao(){
+//
+//    }
+//
+//    void excluirPublicacao(){
+//
+//    }
+//
+//    int validadeIdade(idadeMin: int){
+//
+//    }
 };
 
-class publicacao{
-    public:
-    string conteudo;
-    tm data;
+class categoria{
+public:
+    string nome;
 
-    publicacao(){
-        time_t tt;
-        time(&tt);
-        tm dataAtual = *localtime(&tt);
-        this->data = dataAtual;
+    categoria(){
     }
-
-    void imprimeInfo(){
-        cout << this->data.tm_mday << "/" << this->data.tm_mon + 1 << "/" this->data.tm_year + 1900;
+    categoria(string n){
+        this->nome = n;
     }
 };
 
 class grupo{
+    public:
     string nome;
-    int idade;
-    string categoria;
-    *usuario = adm;
+    int idadeMinUsuario;
+    categoria* cat;
+    usuario* adm;
+    vector<usuario*> participantes;
 
-    void adicionarParticipante(Usuario* usuario){
-
+    grupo(){
+    }
+    grupo(string n, int i, string c, usuario* u){
+        this->nome = n;
+        this->idadeMinUsuario = i;
+        this->cat = new categoria(c);
+        this->adm = u;
     }
 
-    void removerParticipante(){
+    void imprimeInfo(){
+        cout << "nome: " << this->nome << endl;
+        cout << "idade minima: " << this->idadeMinUsuario << endl;
+        cout << "categoria: " << this->cat->nome << endl;
+        cout << "administrador: " << this->adm->nome << endl;
 
     }
-
+//
+    void adicionarParticipante(usuario* u){
+        // Validar se tem idade minima para entrar
+        int i;
+        for(i=0;i<this->participantes.size();i++){
+            if(u->id == this->participantes[i]->id){
+                cout << "O participante já está cadastrado no grupo!" << endl;
+                return;
+            }
+        }
+        this->participantes.push_back(u);
+        cout << "Participante adicionado ao grupo" << endl;
+    }
+//
+//    void removerParticipante(){
+//
+//    }
+//
     void imprimirParticipantes(){
-
+        if(this->participantes.empty()){
+            cout << "Nenhum participante cadastrado!" << endl;
+        } else {
+            int i;
+            for(i=0;i<this->participantes.size();i++){
+                cout << "Participante " << i << endl;
+                this->participantes[i]->imprimeInfo();
+                cout << endl;
+            }
+        }
     }
 
 };
 
-class categoria{
+class redeSocial{
+    public:
     string nome;
+    vector<usuario*> usuarios;
+    vector<grupo*> grupos;
+
+    redeSocial(){
+    }
+    redeSocial(string nome){
+        this->nome = nome;
+    }
+
+    void criarUsuario(){
+        string n, i;
+        cout << "Digite o nome do usuario: ";
+        cin >> n;
+        cout << "Digite o id do usuario: ";
+        cin >> i;
+        usuario * u;
+        u = new usuario(n,i);
+        this->usuarios.push_back(u);
+        cout << "Usuario criado com sucesso!" << endl;
+    }
+
+    void criarGrupo(){
+        if (this->usuarios.empty()){
+            cout << "Não existem usuarios cadastrados, então não é possivel criar o grupo!" << endl;
+        }
+        else {
+            string n, c;
+            int i, p;
+            usuario* adm;
+            cout << "Digite o nome do grupo: ";
+            cin >> n;
+            cout << "Digite a idade minima do grupo: ";
+            cin >> i;
+            cout << "Digite a categoria do grupo: ";
+            cin >> c;
+            this->imprimirUsuariosCadastrados();
+            do{
+                cout << "Digite a posição desejada: ";
+                cin >> p;
+            } while(p<0 || p>=this->usuarios.size());
+
+            adm = this->usuarios[p];
+
+            grupo * g;
+            g = new grupo(n,i,c,adm);
+            this->grupos.push_back(g);
+            cout << "Grupo criado com sucesso!" << endl;
+        }
+    }
+    void imprimirUsuariosCadastrados(){
+        if(this->usuarios.empty()){
+            cout << "Nenhum usuario cadastrado!" << endl;
+        } else {
+            int i;
+            for(i=0;i<this->usuarios.size();i++){
+                cout << "Usuario " << i << endl;
+                this->usuarios[i]->imprimeInfo();
+                cout << endl;
+            }
+        }
+    }
+
+    void imprimirGruposCadastrados(){
+        if(this->grupos.empty()){
+            cout << "Nenhum grupo cadastrado!" << endl;
+        } else {
+            int i;
+            for(i=0;i<this->grupos.size();i++){
+                cout << "Grupo " << i << endl;
+                this->grupos[i]->imprimeInfo();
+                cout << endl;
+            }
+        }
+    }
+//
+//    void imprimirGruposCadastrados(categoria: string){
+//
+//    }
+//
+//    void imprimirAnivarsariantesDoMes(){
+//
+//    }
+//
+//    void selecionaGrupo(){
+//
+//    }
+//
+//    void excluirGrupo(){
+//
+//    }
+//
+    void adicionarParticipanteGrupo(){
+        if(this->grupos.empty() || this->usuarios.empty()){
+            cout << "Não é possível realizar essa operação" << endl;
+        } else {
+            int p1, p2;
+            this->imprimirUsuariosCadastrados();
+            do{
+                cout << "Digite a posição desejada: ";
+                cin >> p1;
+            } while(p1<0 || p1>=this->usuarios.size());
+
+            this->imprimirGruposCadastrados();
+            do{
+                cout << "Digite a posição desejada: ";
+                cin >> p2;
+            } while(p2<0 || p2>=this->grupos.size());
+
+            this->grupos[p2]->adicionarParticipante(this->usuarios[p1]);
+        }
+    }
+//
+//    void removerParticipanteGrupo(){
+//
+//    }
+//
+    void imprimirParticipantesGrupo(){
+        if(this->grupos.empty()){
+            cout << "Não existem grupos cadastrados!" << endl;
+        } else {
+            int p;
+            this->imprimirGruposCadastrados();
+            do{
+                cout << "Digite a posição desejada: ";
+                cin >> p;
+            } while(p<0 || p>=this->grupos.size());
+
+            this->grupos[p]->imprimirParticipantes();
+        }
+    }
+//
+//    void selecionaUsuario(){
+//
+//    }
+//
+//    void seguirUsuario(){
+//
+//    }
+//
+//    void deixarSeguirUsuario(){
+//
+//    }
+//
+//    void criarPublicacaoUsuario(){
+//
+//    }
+//
+//    void editarPublicacaoUsuario(){
+//
+//    }
+//
+//    void excluirPublicacaoUsuario(){
+//
+//    }
+//
+//    void imprimirPublicacoesUsuario(){
+//
+//    }
+//
+//    void imprimirSeguidoresUsuario(){
+//
+//    }
 };
+
+
+
+
+
+
+void menu(){
+    cout << ">>> MENU <<<" << endl << endl;
+    cout << "1) Criar novo Usuário" << endl;
+    cout << "2) Criar novo Grupo" << endl;
+    cout << "5) Imprimir todos Usuários Cadastrados" << endl;
+    cout << "6) Imprimir todos Grupos Cadastrados" << endl;
+    cout << "9) Adicionar Participante" << endl;
+    cout << "11) Imprimir Participantes" << endl;
+    cout << "19) Sair" << endl << endl;
+}
+
 
 int main(){
+    setlocale(LC_ALL, "Portuguese");
+    redeSocial *r;
+    r = new redeSocial("Facebook");
+    int opc;
 
-    usuario* u;
-    u = new usuario();
-    u->imprimeInfo();
+    do {
+        system("cls"); //system("clear")
+        menu();
+        cout << "Escolha a opção desejada: ";
+        cin >> opc;
 
+        switch(opc){
+        case 1:
+            r->criarUsuario();
+            break;
+        case 2:
+            r->criarGrupo();
+            break;
+        case 5:
+            r->imprimirUsuariosCadastrados();
+            break;
+        case 6:
+            r->imprimirGruposCadastrados();
+            break;
+        case 9:
+            r->adicionarParticipanteGrupo();
+            break;
+        case 11:
+            r->imprimirParticipantesGrupo();
+            break;
+        case 19:
+            delete r;
+            break;
+        }
+        cout << "\n\nDigite qualquer tecla para continuar..." << endl;
+        string s;
+        cin.ignore();
+        getline(cin, s);
+    } while (opc != 19);
     return 0;
 }
