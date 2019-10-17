@@ -34,7 +34,7 @@ class usuario{
         this->nome = n;
         this->id = id;
     }
-
+    
 //    vector<string>usuario;
 //
     void imprimeInfo(){
