@@ -34,12 +34,12 @@ class usuario{
         this->nome = n;
         this->id = id;
     }
-    
+
 //    vector<string>usuario;
 //
     void imprimeInfo(){
-        cout << this->nome << endl;
-        cout << this->id << endl;
+        cout << "nome: " << this->nome << endl;
+        cout << "id: " << this->id << endl;
     }
 //
 //    void imprimePublicacoes(){
@@ -196,6 +196,7 @@ class redeSocial{
             cout << "Grupo criado com sucesso!" << endl;
         }
     }
+
     void imprimirUsuariosCadastrados(){
         if(this->usuarios.empty()){
             cout << "Nenhum usuario cadastrado!" << endl;
