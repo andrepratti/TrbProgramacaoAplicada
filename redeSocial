@@ -321,10 +321,22 @@ void menu(){
     cout << ">>> MENU <<<" << endl << endl;
     cout << "1) Criar novo Usuário" << endl;
     cout << "2) Criar novo Grupo" << endl;
+    cout << "3) Excluir Grupo (Rede Social)" << endl;//desenvolver função
+    cout << "4) Imprimir todos Aniversariantes do Mês (Rede Social)" << endl;//desenvolver função
     cout << "5) Imprimir todos Usuários Cadastrados" << endl;
     cout << "6) Imprimir todos Grupos Cadastrados" << endl;
+    cout << "7) Imprimir todos Grupos Cadastrados por Categoria (Rede Social)" << endl;//desenvolver função
+    cout << "8) Imprimir todas Publicações Cadastradas (Rede Social)" << endl;//desenvolver função
     cout << "9) Adicionar Participante" << endl;
+    cout << "10 Remover Participante (Grupo)" << endl;//desenvolver função
     cout << "11) Imprimir Participantes" << endl;
+    cout << "12) Seguir Usuário (Usuário)" << endl;//desenvolver função
+    cout << "13) Deixar de Seguir Usuário (Usuário)" << endl;//desenvolver função
+    cout << "14) Criar Publicação (Usuário)" << endl;//desenvolver função
+    cout << "15) Editar Publicação (Usuário)" << endl;//desenvolver função
+    cout << "16) Excluir Publicação (Usuário)" << endl;//desenvolver função
+    cout << "17) Imprimir Publicações (Usuário)" << endl;//desenvolver função
+    cout << "18) Imprimir Seguidores (Usuário)" << endl;//desenvolver função
     cout << "19) Sair" << endl << endl;
 }
 
@@ -348,17 +360,61 @@ int main(){
         case 2:
             r->criarGrupo();
             break;
+        case 3 :
+            //inserir função
+            break;
+
+        case 4 :
+            //inserir função
+            break;
         case 5:
             r->imprimirUsuariosCadastrados();
             break;
         case 6:
             r->imprimirGruposCadastrados();
             break;
+        case 7:
+            //serir função
+            break;
+
+        case 8:
+            //inserir função
+            break;
         case 9:
             r->adicionarParticipanteGrupo();
             break;
+        case 10:
+            //inserir função
+            break;
         case 11:
             r->imprimirParticipantesGrupo();
+            break;
+        case 12:
+            //inserir função
+            break;
+
+        case 13:
+            //inserir função
+            break;
+
+        case 14:
+            //inserir função
+            break;
+
+        case 15:
+            //inserir função
+            break;
+
+        case 16:
+            //inserir função
+            break;
+
+        case 17:
+            //inserir função
+            break;
+
+        case 18:
+            //inserir função
             break;
         case 19:
             delete r;
